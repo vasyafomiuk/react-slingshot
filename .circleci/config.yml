@@ -6,6 +6,7 @@ jobs:
     docker:
       - image: circleci/node:13.8.0
     steps:
+      - checkout
       - run: 
           command: npm run lint
       - save_cache:
@@ -17,8 +18,10 @@ jobs:
     docker:
       - image: circleci/node:13.8.0
     steps:
+      - checkout
       - restore_cache:
-          keys: ["npm-packages"]
+         keys: 
+              - "npm-packages"
       - run:
           command: npm run test
 
@@ -26,8 +29,10 @@ jobs:
     docker:
         - image: circleci/node:13.8.0
     steps:
+      - checkout
       - restore_cache:
-            keys: ["npm-packages"]
+            keys: 
+              - "npm-packages"
       - run:
           command: npm audit    
 
