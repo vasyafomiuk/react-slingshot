@@ -8,11 +8,13 @@ jobs:
     steps:
       - checkout
       - run: 
-          command: npm run lint
+          command: npm i
       - save_cache:
           key: "npm-packages"
           paths:
             - /src/node_modules
+      - run: 
+          command: npm run lint      
 
   test:
     docker:
